@@ -2,14 +2,13 @@
 
 A reusable authentication and authorization template for system development.
 
-This repository serves as a base template for implementing **multiple authentication and authorization strategies** using Go and Gin. Each strategy is developed in its own **phase and Git branch**, allowing clean separation, experimentation, and reuse across different projects.
+This repository serves as a base template for implementing **multiple authentication and authorization strategies** using Go. Each strategy is developed in its own **phase and Git branch**, allowing clean separation, experimentation, and reuse across different projects.
 
 ---
 
 ## Frameworks Used / To Be Used
 
 - **Go**
-- **Gin Web Framework**
 
 ---
 
@@ -25,7 +24,6 @@ Each authentication or authorization method is implemented in a dedicated **phas
 Stateless authentication using JSON Web Tokens (JWT). This phase covers token generation, validation, middleware protection, and secure request handling.
 
 **Frameworks / Libraries:**
-- Gin
 - JWT library (e.g. `golang-jwt`)
 - Environment-based configuration
 
@@ -42,7 +40,6 @@ Stateless authentication using JSON Web Tokens (JWT). This phase covers token ge
 Authorization layer that controls access based on user roles and permissions. This phase focuses on protecting routes and actions after authentication.
 
 **Frameworks / Libraries:**
-- Gin
 - Custom RBAC middleware
 - Database or in-memory role mapping
 
@@ -59,7 +56,6 @@ Authorization layer that controls access based on user roles and permissions. Th
 Third-party authentication using OAuth providers such as Google or GitHub. This phase handles external login flows and token exchange.
 
 **Frameworks / Libraries:**
-- Gin
 - OAuth2 libraries
 - Third-party identity providers
 
@@ -76,7 +72,6 @@ Third-party authentication using OAuth providers such as Google or GitHub. This 
 Session-based authentication using HTTP cookies. Focuses on session handling, secure cookie configuration, and server-side validation.
 
 **Frameworks / Libraries:**
-- Gin
 - Session management library
 - Secure cookie handling
 
