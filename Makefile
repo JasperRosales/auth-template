@@ -1,6 +1,9 @@
 
 run:
-	go run ./cmd/main.go
+	air
 	
 build:
 	go build -o bin/app ./cmd/main.go
+
+clean:
+	rm -rf bin/
