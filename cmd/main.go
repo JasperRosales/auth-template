@@ -10,6 +10,7 @@ import (
 	"github.com/joho/godotenv"
 
 	user "github.com/JasperRosales/auth-template/internal/model"
+	"github.com/JasperRosales/auth-template/internal/utils"
 )
 
 type api struct {
@@ -17,9 +18,9 @@ type api struct {
 }
 
 func (api *api) Hello(w http.ResponseWriter, r *http.Request) {
-	user := user.New().SetId(1).SetEmail("j@gmail.com").SetPassword("password").Build()
+	user := user.New().SetId(1).SetEmail("j@gmail.com").SetPassword(utils.HashPassword("asper")).Build()
 
-	w.Write([]byte("Hello, World!\n" + fmt.Sprintf("User: %+v", user)))
+	w.Write([]byte("Hello, World!\n" + fmt.Sprintf("User: %+v \n", user.PrettyPrint())))
 }
 
 func main() {
