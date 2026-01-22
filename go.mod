@@ -1,4 +1,4 @@
-module github.com/asJasperRosales/auth-template
+module github.com/JasperRosales/auth-template
 
 go 1.23.4
 

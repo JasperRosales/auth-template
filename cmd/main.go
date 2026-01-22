@@ -8,31 +8,33 @@ import (
 	"time"
 
 	"github.com/joho/godotenv"
+
+	user "github.com/JasperRosales/auth-template/internal/model"
 )
 
-type api struct{
-    addr string
+type api struct {
+	addr string
 }
-
 
 func (api *api) Hello(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Hello, World!\n"))
-}
+	user := user.New().SetId(1).SetEmail("j@gmail.com").SetPassword("password").Build()
 
+	w.Write([]byte("Hello, World!\n" + fmt.Sprintf("User: %+v", user)))
+}
 
 func main() {
 	godotenv.Load()
 
-    port := os.Getenv("PORT")
+	port := os.Getenv("PORT")
 	if port == "" {
 		log.Fatal("PORT environment variable not set")
 	}
 
-    api := &api{
-        addr: fmt.Sprintf(":%s", port),
-    }
+	api := &api{
+		addr: fmt.Sprintf(":%s", port),
+	}
 
-    mux := http.NewServeMux()
+	mux := http.NewServeMux()
 
 	s := &http.Server{
 		Addr:           api.addr,
@@ -44,9 +46,8 @@ func main() {
 
 	mux.HandleFunc("GET /hello", api.Hello)
 
-	
 	log.Println("Server starting on", s.Addr)
 
-	err := http.ListenAndServe(s.Addr, nil)
+	err := http.ListenAndServe(s.Addr, mux)
 	log.Fatal(err)
 }
